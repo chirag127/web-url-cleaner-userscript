@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Install guide — userscripts" description="Install ScriptCat, then install any script in this collection in three steps.">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Install guide</p>
+      <h1>Install a userscript in three steps</h1>
+      <p class="lede">
+        ScriptCat is the recommended manager: it installs from a raw URL, updates from GitHub, and
+        keeps each script's settings in one panel. The steps below work the same way for every script
+        in this collection.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>1. Install ScriptCat</h2>
+      <p class="section__sub">Use the current stable release, which is the MV3 build.</p>
+      <ol class="steps">
+        <li>
+          Open <a href="https://scriptcat.org/">scriptcat.org</a> and choose your browser, or install
+          "ScriptCat" from the Chrome Web Store, Microsoft Edge Add-ons, or Firefox Add-ons.
+        </li>
+        <li>
+          Confirm the browser's permission prompt. ScriptCat asks for access to the sites you install
+          scripts for; it does not need broad host access up front.
+        </li>
+        <li>
+          Pin the ScriptCat icon to the toolbar so the script menu is one click away. Keep automatic
+          updates switched on.
+        </li>
+      </ol>
+      <p class="install-note">
+        Tampermonkey and Violentmonkey also run these scripts. ScriptCat is preferred because its
+        install screen shows the full metadata, its update checks are reliable against
+        <code>raw.githubusercontent.com</code>, and its per-script menu is where <strong>Settings…</strong>
+        lives.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>2. Install the script</h2>
+      <ol class="steps">
+        <li>Open the script's page in this collection and press <strong>Add to ScriptCat</strong>.</li>
+        <li>ScriptCat opens an install tab showing the name, version, matches, and grants. Read them, then press <strong>Install</strong>.</li>
+        <li>Open the site the script targets. If the script adds a button or a key, it is active immediately — no reload needed unless the page says otherwise.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>3. Configure and update</h2>
+      <ol class="steps">
+        <li>
+          Click the ScriptCat toolbar icon and choose the script's <strong>Settings…</strong>. Every
+          option is in that one panel.
+        </li>
+        <li>
+          Changes save as you make them and apply on the next page load. No option requires editing
+          code.
+        </li>
+        <li>
+          Updates arrive automatically from the repository's <code>main</code> branch. To force a
+          check, open ScriptCat's script list and press <strong>Update</strong>.
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Troubleshooting</h2>
+      <ul class="notes">
+        <li><strong>Nothing happens.</strong> Check that the script is enabled in ScriptCat and that the page URL matches the script's <code>@match</code> rules. Then reload the page.</li>
+        <li><strong>The install tab opens as plain text.</strong> ScriptCat is not running or is disabled. Enable it and press the install link again.</li>
+        <li><strong>An update never arrives.</strong> Confirm the script's <code>@updateURL</code> resolves — open it directly; it must return the raw JavaScript, not an HTML page.</li>
+        <li><strong>Two scripts fight.</strong> Only one script in this collection owns a given capability (keys, toolbar, removal). Disable the older script rather than running both.</li>
+      </ul>
+    </div>
+  </section>
+</Base>

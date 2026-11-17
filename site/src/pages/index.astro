@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+import data from '../data/script.json';
+
+const base = import.meta.env.BASE_URL;
+const installHref = data.installUrl;
+---
+
+<Base title={`${data.title} — userscript`} description={data.summary}>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>{data.platform}</p>
+        <h1>{data.title}</h1>
+        <p class="lede">{data.summary}</p>
+        <div class="pills">
+          <span class="pill">v{data.version}</span>
+          <span class="pill">ScriptCat · Tampermonkey · Violentmonkey</span>
+          <span class="pill">No build step</span>
+        </div>
+      </div>
+
+      <aside class="card install-card" aria-labelledby="install-heading">
+        <h2 id="install-heading">Install</h2>
+        <p class="install-card__repo">{data.filename}</p>
+        <a class="btn" href={installHref}>Add to ScriptCat</a>
+        <a class="btn btn--ghost" href={data.sourceUrl}>Read the source</a>
+        <p class="install-note">
+          Opens the raw userscript. ScriptCat shows its install screen; approve once and the
+          script updates itself from <code>main</code> after that.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>What it does</h2>
+      <p class="section__sub">One job, done properly. No background service, no account, no network calls beyond the site you are already on.</p>
+      <ul class="features">
+        {data.features.map((f) => (
+          <li class="feature">
+            <h3>{f.title}</h3>
+            <p>{f.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Options</h2>
+      <p class="section__sub">
+        Open <strong>Settings…</strong> from the userscript manager menu. Every option lives in that
+        one panel and is stored per browser profile.
+      </p>
+      {data.options.length > 0 ? (
+        <div class="rows" role="table" aria-label="Script options">
+          <div class="row" role="row">
+            <span class="row__name" role="columnheader">Option</span>
+            <span class="row__default" role="columnheader">Default</span>
+            <span class="row__desc" role="columnheader">What it changes</span>
+          </div>
+          {data.options.map((o) => (
+            <div class="row" role="row">
+              <span class="row__name" role="cell">{o.name}</span>
+              <span class="row__default" role="cell">{o.default}</span>
+              <span class="row__desc" role="cell">{o.description}</span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="install-note">This script has no settings. It starts working as soon as it is installed.</p>
+      )}
+    </div>
+  </section>
+
+  {data.shortcuts.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <h2>Keys</h2>
+        <p class="section__sub">Disabled while you are typing in a field, so it never eats real input.</p>
+        <div class="rows">
+          {data.shortcuts.map((s) => (
+            <div class="row">
+              <span class="row__name"><span class="keys">{s.keys}</span></span>
+              <span class="row__default"></span>
+              <span class="row__desc">{s.action}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Install</h2>
+      <p class="section__sub">Three steps, about a minute.</p>
+      <ol class="steps">
+        <li>
+          <strong>Install ScriptCat.</strong> Use the current stable release (MV3) from
+          <a href="https://scriptcat.org/">scriptcat.org</a> or your browser's add-on store, then pin
+          it to the toolbar. Version 1.0 or newer is required.
+        </li>
+        <li>
+          <strong>Add this script.</strong> Press <em>Add to ScriptCat</em> above and confirm the
+          install screen. The script needs no extra permissions and no API key.
+        </li>
+        <li>
+          <strong>Open {data.platform}.</strong> The feature appears immediately. To change anything,
+          use <strong>Settings…</strong> in the ScriptCat menu for this script.
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Notes</h2>
+      <ul class="notes">
+        {data.notes.map((n) => <li>{n}</li>)}
+        <li>Updates come from the <code>main</code> branch of this repository. Fork it and change the two update URLs to keep your own build.</li>
+        <li>Uninstall from ScriptCat's script list; nothing is left behind except the settings you saved.</li>
+      </ul>
+    </div>
+  </section>
+</Base>

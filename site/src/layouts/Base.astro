@@ -1,0 +1,54 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-head">
+      <div class="wrap site-head__inner">
+        <a class="brand" href={base}>
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span>userscripts</span>
+        </a>
+        <nav class="head-links" aria-label="Project">
+          <a href={`${base}install/`}>Install guide</a>
+          <a href="https://github.com/chirag127">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-foot">
+      <div class="wrap site-foot__inner">
+        <span>MIT licensed. Part of the <a href="https://github.com/chirag127">chirag127</a> userscript collection.</span>
+        <span>
+          <a href={`${base}install/`}>Install guide</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

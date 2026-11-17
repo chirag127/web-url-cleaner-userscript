@@ -1,0 +1,41 @@
+{
+  "repo": "web-url-cleaner-userscript",
+  "filename": "web-url-cleaner-userscript.user.js",
+  "title": "URL Cleaner",
+  "summary": "Strips tracking parameters such as utm_*, fbclid, gclid and igshid from the address bar and from URLs you copy, so the links you paste do not carry an audience profile with them.",
+  "version": "0.1.0",
+  "platform": "Any website",
+  "installUrl": "https://raw.githubusercontent.com/chirag127/web-url-cleaner-userscript/main/web-url-cleaner-userscript.user.js",
+  "sourceUrl": "https://github.com/chirag127/web-url-cleaner-userscript/blob/main/web-url-cleaner-userscript.user.js",
+  "features": [
+    {
+      "title": "Cleans the address bar on load",
+      "body": "Rewrites the current URL with history.replaceState, so the tracking parameters disappear without a reload and without losing the page state."
+    },
+    {
+      "title": "Cleans copied links",
+      "body": "Hooks copy and cut in the capture phase, so a selected URL is rewritten before the page's own clipboard handler sees it."
+    },
+    {
+      "title": "Covers the usual offenders",
+      "body": "Drops utm_*, fbclid, gclid, dclid, msclkid, twclid, mc_eid, igshid, li_fat_id, HubSpot and Marketo parameters, and similar campaign tags."
+    }
+  ],
+  "options": [
+    {
+      "name": "Clean address bar",
+      "default": "On",
+      "description": "Rewrite the current tab's URL when tracking parameters are present."
+    },
+    {
+      "name": "Clean copied URLs",
+      "default": "On",
+      "description": "Rewrite a selected URL on copy or cut before it reaches the clipboard."
+    }
+  ],
+  "shortcuts": [],
+  "notes": [
+    "Only parameters known to be tracking tags are removed. Functional parameters such as page ids, search terms and share tokens are left alone.",
+    "Pages that read the URL before this script runs may have already seen the original parameters; the address bar itself is still cleaned."
+  ]
+}
