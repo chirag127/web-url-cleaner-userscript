@@ -5,7 +5,7 @@
 [![version](https://img.shields.io/badge/version-0.1.0-blue)](./web-url-cleaner-userscript.user.js)
 [![license](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
-**[Install in ScriptCat](https://raw.githubusercontent.com/chirag127/web-url-cleaner-userscript/main/web-url-cleaner-userscript.user.js)** · [Landing page](https://chirag127.github.io/web-url-cleaner-userscript/) · [Source](./web-url-cleaner-userscript.user.js) · [Issues](https://github.com/chirag127/web-url-cleaner-userscript/issues)
+**[Install in ScriptCat](https://raw.githubusercontent.com/chirag127/web-url-cleaner-userscript/main/web-url-cleaner-userscript.user.js)** · [Landing page](https://gh.oriz.in/web-url-cleaner-userscript/) · [Source](./web-url-cleaner-userscript.user.js) · [Issues](https://github.com/chirag127/web-url-cleaner-userscript/issues)
 
 ## What it does
 
